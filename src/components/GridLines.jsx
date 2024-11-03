@@ -1,7 +1,7 @@
 // Renders the grid lines for the game board, providing a visual structure to the squares.
 
 const GridLines = () => (
-  <div className="absolute inset-2 sm:inset-4">{/* Outer container for grid lines */}
+  <div className="absolute inset-2">{/* Outer container for grid lines */}
     {/* Vertical lines */}
     <div className="absolute left-1/3 top-0 h-full w-0.5 bg-neutral-600"></div>
     <div className="absolute right-1/3 top-0 h-full w-0.5 bg-neutral-600"></div>
