@@ -39,7 +39,7 @@ const PlayerBoard = ({ isPlayerX }) => {
   return (
     <div
       className={`w-full lg:w-1/2 p-4 sm:p-8 transition-all duration-300 ${
-        !isActive && "opacity-50"
+        !isActive && "opacity-45"
       }`}
     >
       <h2 className="text-lg sm:text-2xl font-bold text-center mb-2">
