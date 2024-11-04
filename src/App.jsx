@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
-import PlayerBoard from "./components/PlayerBoard";
-import ScoreBoard from "./components/ScoreBoard";
+import PlayerBoard from "./components/tic-tac-toe/PlayerBoard";
+import ScoreBoard from "./components/tic-tac-toe/ScoreBoard";
 import { useEffect } from "react";
+import ChatParent from "./components/chat-room/ChatParent";
 
 const App = () => {
   const scores = useSelector((state) => state.game.scores);
@@ -19,6 +20,7 @@ const App = () => {
         <PlayerBoard isPlayerX={true} />
         <PlayerBoard isPlayerX={false} />
       </div>
+      <ChatParent />
     </div>
   );
 };
