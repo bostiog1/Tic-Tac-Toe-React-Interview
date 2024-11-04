@@ -6,7 +6,7 @@ import GridLines from "./GridLines";
 import { useEffect } from "react";
 
 const PlayerBoard = ({ isPlayerX }) => {
-  const { board, isXTurn, winner, winLine, messages } = useSelector(
+  const { board, isXTurn, winner, winLine, isDraw, messages } = useSelector(
     (state) => state.game
   );
   const dispatch = useDispatch();
@@ -27,14 +27,14 @@ const PlayerBoard = ({ isPlayerX }) => {
 
   // Effect to reset the game after a win
   useEffect(() => {
-    if (winner) {
+    if (winner || isDraw) {
       const timer = setTimeout(() => {
         dispatch(resetGame()); // Reset game state after 5 seconds
       }, 5000);
 
       return () => clearTimeout(timer); // Cleanup timer on unmount or when winner changes
     }
-  }, [winner, dispatch]);
+  }, [winner, isDraw, dispatch]);
 
   return (
     <div

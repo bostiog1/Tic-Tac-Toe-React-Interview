@@ -17,6 +17,7 @@ const initialState = {
   isXTurn: true,
   winner: null,
   winLine: null,
+  isDraw: false,
   scores: loadFromLocalStorage("scores", { x: 0, o: 0 }),
   messages: {
     playerXMessage: "Game started! Your turn:",
@@ -42,7 +43,7 @@ const gameSlice = createSlice({
     handleClick: (state, action) => {
       // Reducer for handling a player's click
       const { index } = action.payload; // Get the clicked square index
-      if (state.board[index] || state.winner) return; // Ignore if square is taken or game is won
+      if (state.board[index] || state.winner || state.isDraw) return; // Ignore if square is taken or game is won
 
       state.board[index] = state.isXTurn ? "X" : "O"; // Place X or O on the board
 
@@ -53,6 +54,7 @@ const gameSlice = createSlice({
         state.winner = winner.player; // Set the winner
         state.winLine = winner.line; // Save the winning line
         state.scores[winner.player === "X" ? "x" : "o"] += 1; // Update scores based on the winner
+        state.isDraw = false;
 
         state.messages = {
           playerXMessage: winner.player === "X" ? "You won!" : "You lost!",
@@ -60,6 +62,9 @@ const gameSlice = createSlice({
         };
         saveToLocalStorage("scores", state.scores);
       } else if (state.board.every((square) => square !== null)) {
+        state.isDraw = true;
+        state.winner = null;
+        state.winLine = null;
         state.messages = {
           playerXMessage: "Draw!",
           playerOMessage: "Draw!",
@@ -78,6 +83,7 @@ const gameSlice = createSlice({
       state.isXTurn = true;
       state.winner = null;
       state.winLine = null;
+      state.isDraw = false;
       state.messages = {
         playerXMessage: "Game started! Your turn:",
         playerOMessage: "Game started! Wait your opponent.",
@@ -91,6 +97,7 @@ const gameSlice = createSlice({
       state.isXTurn = true;
       state.winner = null;
       state.winLine = null;
+      state.isDraw = false;
       state.messages = {
         playerXMessage: "Game started! Your turn:",
         playerOMessage: "Game started! Wait your opponent.",
