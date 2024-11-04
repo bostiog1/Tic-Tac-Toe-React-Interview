@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Load scores from localStorage
-const loadScoresFromLocalStorage = () => {
-  const savedScores = localStorage.getItem("scores");
-  return savedScores ? JSON.parse(savedScores) : { x: 0, o: 0 };
+// Load data from localStorage
+const loadFromLocalStorage = (key, fallback) => {
+  const saved = localStorage.getItem(key);
+  return saved ? JSON.parse(saved) : fallback;
 };
 
-// Save scores to localStorage
-const saveScoresToLocalStorage = (scores) => {
-  localStorage.setItem("scores", JSON.stringify(scores));
+// Save data to localStorage
+const saveToLocalStorage = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
 };
 
 // Initial state of the game
@@ -17,11 +17,12 @@ const initialState = {
   isXTurn: true,
   winner: null,
   winLine: null,
-  scores: loadScoresFromLocalStorage(),
+  scores: loadFromLocalStorage("scores", { x: 0, o: 0 }),
   messages: {
     playerXMessage: "Game started! Your turn:",
     playerOMessage: "Game started! Wait your opponent.",
   },
+  chatMessages: loadFromLocalStorage("chatMessages", []),
   winningLines: [
     [0, 1, 2],
     [3, 4, 5],
@@ -57,7 +58,7 @@ const gameSlice = createSlice({
           playerXMessage: winner.player === "X" ? "You won!" : "You lost!",
           playerOMessage: winner.player === "O" ? "You won!" : "You lost!",
         };
-        saveScoresToLocalStorage(state.scores); // Save scores to localStorage on win
+        saveToLocalStorage("scores", state.scores);
       } else if (state.board.every((square) => square !== null)) {
         state.messages = {
           playerXMessage: "Draw!",
@@ -71,7 +72,7 @@ const gameSlice = createSlice({
         };
       }
     },
-    // Reducer to reset the game
+    // Reducer to reset the game after 5 seconds
     resetGame: (state) => {
       state.board = Array(9).fill(null);
       state.isXTurn = true;
@@ -82,9 +83,10 @@ const gameSlice = createSlice({
         playerOMessage: "Game started! Wait your opponent.",
       };
     },
-    // Reducer to reset the scores
+    // Reducer to reset the whole game
     resetScores: (state) => {
       state.scores = { x: 0, o: 0 };
+      saveToLocalStorage("scores", state.scores);
       state.board = Array(9).fill(null);
       state.isXTurn = true;
       state.winner = null;
@@ -93,6 +95,12 @@ const gameSlice = createSlice({
         playerXMessage: "Game started! Your turn:",
         playerOMessage: "Game started! Wait your opponent.",
       };
+      state.chatMessages = [];
+      saveToLocalStorage("chatMessages", state.chatMessages);
+    },
+    addChatMessage: (state, action) => {
+      state.chatMessages.push(action.payload);
+      saveToLocalStorage("chatMessages", state.chatMessages);
     },
   },
 });
@@ -110,5 +118,6 @@ function checkWinner(board, winningLines) {
   return null;
 }
 
-export const { handleClick, resetGame, resetScores } = gameSlice.actions;
+export const { handleClick, resetGame, resetScores, addChatMessage } =
+  gameSlice.actions;
 export default gameSlice.reducer;
