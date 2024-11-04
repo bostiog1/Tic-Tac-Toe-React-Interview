@@ -51,6 +51,7 @@ Follow these steps to run the application locally.
 1. **Clone the repository**:
    open terminal
    git clone https://github.com/bostiog1/Tic-Tac-Toe-React-Interview.git
+
    cd tic-tac-toe-react-interview
 
 2. **Install dependencies:**:
