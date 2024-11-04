@@ -56,8 +56,10 @@ Follow these steps to run the application locally.
 
    cd tic-tac-toe-react-interview
 
-2. **Install dependencies:**:
+2. **Install dependencies:**
+
    npm install
 
 3. **Start the development server**:
+
    npm run dev
