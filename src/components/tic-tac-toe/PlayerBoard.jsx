@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { handleClick, resetGame } from "../redux/gameSlice";
+import { handleClick, resetGame } from "../../redux/gameSlice";
 import Square from "./Square";
 import WinningLine from "./WinningLine";
 import GridLines from "./GridLines";
@@ -38,7 +38,7 @@ const PlayerBoard = ({ isPlayerX }) => {
 
   return (
     <div
-      className={`w-full lg:w-1/2 p-4 sm:p-8 transition-all duration-300 ${
+      className={`w-full lg:w-1/2  transition-all duration-300 ${
         !isActive && "opacity-45"
       }`}
     >
@@ -50,7 +50,7 @@ const PlayerBoard = ({ isPlayerX }) => {
       >
         {message}
       </div>
-      <div className="relative max-w-[200px] sm:max-w-[300px] mx-auto bg-neutral-800 rounded-lg">
+      <div className="relative max-w-[200px] sm:max-w-[275px] mx-auto bg-neutral-800 rounded-lg">
         {/* Display winning line if game is won */}
         {winner && winLine !== null && <WinningLine winLine={winLine} />}
 

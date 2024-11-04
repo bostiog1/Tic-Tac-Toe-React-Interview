@@ -1,7 +1,7 @@
 // Displays the current scores and provides a button to reset them.
 
 import { useSelector, useDispatch } from "react-redux";
-import { resetScores } from "../redux/gameSlice";
+import { resetScores } from "../../redux/gameSlice";
 
 const ScoreBoard = () => {
   const scores = useSelector((state) => state.game.scores); // Select scores from Redux state

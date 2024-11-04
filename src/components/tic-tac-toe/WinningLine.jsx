@@ -1,6 +1,6 @@
 // Displays a visual line indicating the winning combination in the Tic Tac Toe game.
 
-import { getWinLineStyle } from "../utils/getWinLineStyles";
+import { getWinLineStyle } from "../../utils/getWinLineStyles";
 
 const WinningLine = ({ winLine }) => {
   // If no winning line is provided, do not render anything
