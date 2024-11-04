@@ -1,5 +1,7 @@
 # Tic-Tac-Toe Game
 
+## Overview Visit https://tranquil-clafoutis-50599f.netlify.app/ to see the live website.
+
 A responsive Tic-Tac-Toe game built with React, Redux, and TailwindCSS. This application allows two players to compete, keeps track of scores, and features a chat functionality for real-time communication between players, optimized for different screen sizes.
 
 ## Features
