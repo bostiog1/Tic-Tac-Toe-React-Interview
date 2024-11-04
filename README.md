@@ -1,6 +1,7 @@
 # Tic-Tac-Toe Game
 
-## Overview Visit https://bostiog1.github.io/Tic-Tac-Toe-React-Interview/ to see the live website.
+## Overview 
+Visit https://bostiog1.github.io/Tic-Tac-Toe-React-Interview/ to see the live website.
 
 A responsive Tic-Tac-Toe game built with React, Redux, and TailwindCSS. This application allows two players to compete, keeps track of scores, and features a chat functionality for real-time communication between players, optimized for different screen sizes.
 
