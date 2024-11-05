@@ -1,5 +1,8 @@
 # Tic-Tac-Toe Game
 
+## Overview 
+Visit https://bostiog1.github.io/Tic-Tac-Toe-React-Interview/ to see the live website.
+
 A responsive Tic-Tac-Toe game built with React, Redux, and TailwindCSS. This application allows two players to compete, keeps track of scores, and features a chat functionality for real-time communication between players, optimized for different screen sizes.
 
 ## Features
@@ -46,12 +49,17 @@ Follow these steps to run the application locally.
 ### Installation
 
 1. **Clone the repository**:
+
    open terminal
+
    git clone https://github.com/bostiog1/Tic-Tac-Toe-React-Interview.git
+
    cd tic-tac-toe-react-interview
 
-2. **Install dependencies:**:
+2. **Install dependencies:**
+
    npm install
 
 3. **Start the development server**:
+
    npm run dev
