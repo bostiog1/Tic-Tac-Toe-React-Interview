@@ -5,7 +5,7 @@ const ChatInput = ({ sender }) => {
   const { input, setInput, handleSend } = useChatInput(sender);
 
   return (
-    <div className="flex gap-2 flex-wrap md:flex-nowrap">
+    <div className="flex gap-2 items-center">
       <input
         type="text"
         value={input}
